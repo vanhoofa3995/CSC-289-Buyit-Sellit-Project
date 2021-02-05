@@ -1,1 +1,1 @@
-# CSC-289-Buyit-Sellit-Project
+This repository holds all files and documents related to the "Buyit Sellit" Project.
