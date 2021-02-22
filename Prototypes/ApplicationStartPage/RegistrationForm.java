@@ -9,21 +9,21 @@ public class RegistrationForm implements ActionListener {
     JFrame frame;
     
     //Creating objects
-    String[] gender={"Male","Female"};
-    JLabel fullNameLabel=new JLabel("FULL NAME");
-    JLabel genderLabel=new JLabel("GENDER");
-    JLabel fatherNameLabel=new JLabel("FATHER NAME");
+    JLabel lastNameLabel=new JLabel("LAST NAME");
+    JLabel firstNameLabel=new JLabel("FIRST NAME");
+    JLabel emailLabel=new JLabel("EMAIL");
     JLabel passwordLabel=new JLabel("PASSWORD");
     JLabel confirmPasswordLabel=new JLabel("CONFIRM PASSWORD");
-    JLabel cityLabel=new JLabel("CITY");
-    JLabel emailLabel=new JLabel("EMAIL");
-    JTextField nameTextField=new JTextField();
-    JComboBox genderComboBox=new JComboBox(gender);
-    JTextField fatherTextField=new JTextField();
+    JLabel securityQuestionLabel=new JLabel("SECUIRITY QUESTION");
+    JLabel securityAnswerLabel=new JLabel("SECUIRITY ANSWER");
+    
+    JTextField lastNameTextField=new JTextField();
+    JTextField firstNameTextField=new JTextField();
+    JTextField emailTextField=new JTextField();
     JPasswordField passwordField=new JPasswordField();
     JPasswordField confirmPasswordField=new JPasswordField();
-    JTextField cityTextField=new JTextField();
-    JTextField emailTextField=new JTextField();
+    JTextField securityQuestionTextField=new JTextField();
+    JTextField securityAnswerTextField=new JTextField();
     JButton registerButton=new JButton("REGISTER");
     JButton resetButton=new JButton("RESET");
     
@@ -41,7 +41,7 @@ public class RegistrationForm implements ActionListener {
     {
         frame=new JFrame();
         frame.setTitle("Registration Form");
-        frame.setBounds(40,40,380,600);
+        frame.setBounds(40,40,400,600);
         frame.getContentPane().setBackground(Color.green);
         frame.getContentPane().setLayout(null);
         frame.setVisible(true);
@@ -51,39 +51,41 @@ public class RegistrationForm implements ActionListener {
     
     public void setLocationAndSize()
     {
-        fullNameLabel.setBounds(20,20,40,70);
-        genderLabel.setBounds(20,70,80,70);
-        fatherNameLabel.setBounds(20,120,100,70);
+        lastNameLabel.setBounds(20,20,100,70);
+        firstNameLabel.setBounds(20,70,100,70);
+        emailLabel.setBounds(20,120,100,70);
         passwordLabel.setBounds(20,170,100,70);
         confirmPasswordLabel.setBounds(20,220,140,70);
-        cityLabel.setBounds(20,270,100,70);
-        emailLabel.setBounds(20,320,100,70);
-        nameTextField.setBounds(180,43,165,23);
-        genderComboBox.setBounds(180,93,165,23);
-        fatherTextField.setBounds(180,143,165,23);
-        passwordField.setBounds(180,193,165,23);
-        confirmPasswordField.setBounds(180,243,165,23);
-        cityTextField.setBounds(180,293,165,23);
-        emailTextField.setBounds(180,343,165,23);
+        securityQuestionLabel.setBounds(20,270,150,70);
+        securityAnswerLabel.setBounds(20,320,150,70);
+        
+        lastNameTextField.setBounds(180,43,185,23);
+        firstNameTextField.setBounds(180,93,185,23);
+        emailTextField.setBounds(180,143,185,23);
+        passwordField.setBounds(180,193,185,23);
+        confirmPasswordField.setBounds(180,243,185,23);
+        securityQuestionTextField.setBounds(180,293,185,23);
+        securityAnswerTextField.setBounds(180,343,185,23);
         registerButton.setBounds(70,400,100,35);
         resetButton.setBounds(220,400,100,35);
     }
     public void addComponentsToFrame()
     {
-        frame.add(fullNameLabel);
-        frame.add(genderLabel);
-        frame.add(fatherNameLabel);
+        frame.add(lastNameLabel);
+        frame.add(firstNameLabel);
+        frame.add(emailLabel);
         frame.add(passwordLabel);
         frame.add(confirmPasswordLabel);
-        frame.add(cityLabel);
-        frame.add(emailLabel);
-        frame.add(nameTextField);
-        frame.add(genderComboBox);
-        frame.add(fatherTextField);
+        frame.add(securityQuestionLabel);
+        frame.add(securityAnswerLabel);
+        
+        frame.add(lastNameTextField);
+        frame.add(firstNameTextField);
+        frame.add(emailTextField);
         frame.add(passwordField);
         frame.add(confirmPasswordField);
-        frame.add(cityTextField);
-        frame.add(emailTextField);
+        frame.add(securityQuestionTextField);
+        frame.add(securityAnswerTextField);
         frame.add(registerButton);
         frame.add(resetButton);
     }
@@ -99,14 +101,14 @@ public class RegistrationForm implements ActionListener {
         {
             try {
                 Connection connection=DriverManager.getConnection("jdbc:derby://localhost:1527/GamingDomainDataBase","VanHoofAlex","password");
-                PreparedStatement Pstatement=connection.prepareStatement("insert into student values(FullName,Gender,FatherName,Password,ConfirmPassword,City,Email)");
-                Pstatement.setString(1,nameTextField.getText());
-                Pstatement.setString(2,genderComboBox.getSelectedItem().toString());
-                Pstatement.setString(3,fatherTextField.getText());
+                PreparedStatement Pstatement=connection.prepareStatement("INSERT INTO userProfile" + "VALUES ( lastName, firstName, email, password, confirmPassword, securityQuestion, securityAnswer)");
+                Pstatement.setString(1,lastNameTextField.getText());
+                Pstatement.setString(2,firstNameTextField.getText());
+                Pstatement.setString(3,emailTextField.getText());
                 Pstatement.setString(4,passwordField.getText());
                 Pstatement.setString(5,confirmPasswordField.getText());
-                Pstatement.setString(6,cityTextField.getText());
-                Pstatement.setString(7,emailTextField.getText());
+                Pstatement.setString(6,securityQuestionTextField.getText());
+                Pstatement.setString(7,securityAnswerTextField.getText());
                 if(passwordField.getText().equalsIgnoreCase(confirmPasswordField.getText()))
                 {
 
@@ -126,13 +128,13 @@ public class RegistrationForm implements ActionListener {
         }
         if(e.getSource()==resetButton)
         {
-            nameTextField.setText("");
-            genderComboBox.setSelectedItem("Male");
-            fatherTextField.setText("");
+            lastNameTextField.setText("");
+            firstNameTextField.setText("");
+            emailTextField.setText("");
             passwordField.setText("");
             confirmPasswordField.setText("");
-            cityTextField.setText("");
-            emailTextField.setText("");
+            securityQuestionTextField.setText("");
+            securityAnswerTextField.setText("");
         }
 
     }
