@@ -1,140 +1,118 @@
 package applicationstartpage;
 
 import javax.swing.*;
-import java.awt.event.*;
 import java.awt.*;
-import java.sql.*;
-
-public class RegistrationForm implements ActionListener {
-    JFrame frame;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+ 
+public class LoginForm extends JFrame implements ActionListener {
     
-    //Creating objects
-    String[] gender={"Male","Female"};
-    JLabel fullNameLabel=new JLabel("FULL NAME");
-    JLabel genderLabel=new JLabel("GENDER");
-    JLabel fatherNameLabel=new JLabel("FATHER NAME");
-    JLabel passwordLabel=new JLabel("PASSWORD");
-    JLabel confirmPasswordLabel=new JLabel("CONFIRM PASSWORD");
-    JLabel cityLabel=new JLabel("CITY");
-    JLabel emailLabel=new JLabel("EMAIL");
-    JTextField nameTextField=new JTextField();
-    JComboBox genderComboBox=new JComboBox(gender);
-    JTextField fatherTextField=new JTextField();
-    JPasswordField passwordField=new JPasswordField();
-    JPasswordField confirmPasswordField=new JPasswordField();
-    JTextField cityTextField=new JTextField();
-    JTextField emailTextField=new JTextField();
-    JButton registerButton=new JButton("REGISTER");
-    JButton resetButton=new JButton("RESET");
-    
-    
-    //Creating constructor
-    RegistrationForm()
-    {
-        createWindow();
+    Container container = getContentPane();
+    JLabel userLabel = new JLabel("USERNAME");
+    JLabel passwordLabel = new JLabel("PASSWORD");
+    JTextField userTextField = new JTextField();
+    JPasswordField passwordField = new JPasswordField();
+    JButton loginButton = new JButton("LOGIN");
+    JButton resetButton = new JButton("RESET");
+    JCheckBox showPassword = new JCheckBox("Show Password");
+    JButton forgotPasswordButton = new JButton("FORGOT PASSWORD");
+    JButton createAccountButton = new JButton("CREATE ACCOUNT");
+ 
+ 
+    LoginForm() {
+        setLayoutManager();
         setLocationAndSize();
-        addComponentsToFrame();
-        actionEvent();
+        addComponentsToContainer();
+        addActionEvent();
+ 
     }
-    
-    public void createWindow()
-    {
-        frame=new JFrame();
-        frame.setTitle("Registration Form");
-        frame.setBounds(40,40,380,600);
-        frame.getContentPane().setBackground(Color.green);
-        frame.getContentPane().setLayout(null);
-        frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
+ 
+    public void setLayoutManager() {
+        container.setLayout(null);
+        container.setBounds(40,40,400,600);
+        container.setBackground(Color.green);
     }
-    
-    public void setLocationAndSize()
-    {
-        fullNameLabel.setBounds(20,20,40,70);
-        genderLabel.setBounds(20,70,80,70);
-        fatherNameLabel.setBounds(20,120,100,70);
-        passwordLabel.setBounds(20,170,100,70);
-        confirmPasswordLabel.setBounds(20,220,140,70);
-        cityLabel.setBounds(20,270,100,70);
-        emailLabel.setBounds(20,320,100,70);
-        nameTextField.setBounds(180,43,165,23);
-        genderComboBox.setBounds(180,93,165,23);
-        fatherTextField.setBounds(180,143,165,23);
-        passwordField.setBounds(180,193,165,23);
-        confirmPasswordField.setBounds(180,243,165,23);
-        cityTextField.setBounds(180,293,165,23);
-        emailTextField.setBounds(180,343,165,23);
-        registerButton.setBounds(70,400,100,35);
-        resetButton.setBounds(220,400,100,35);
+ 
+    public void setLocationAndSize() {
+        userLabel.setBounds(20, 150, 100, 30);
+        passwordLabel.setBounds(20, 220, 100, 30);
+        userTextField.setBounds(185, 150, 150, 30);
+        passwordField.setBounds(185, 220, 150, 30);
+        showPassword.setBounds(185, 250, 150, 30);
+        showPassword.setBackground(Color.green);
+        loginButton.setBounds(15, 300, 160, 30);
+        resetButton.setBounds(185, 300, 160, 30);
+        forgotPasswordButton.setBounds(15, 340, 160, 30);
+        createAccountButton.setBounds(185, 340, 160, 30);
+ 
+ 
     }
-    public void addComponentsToFrame()
-    {
-        frame.add(fullNameLabel);
-        frame.add(genderLabel);
-        frame.add(fatherNameLabel);
-        frame.add(passwordLabel);
-        frame.add(confirmPasswordLabel);
-        frame.add(cityLabel);
-        frame.add(emailLabel);
-        frame.add(nameTextField);
-        frame.add(genderComboBox);
-        frame.add(fatherTextField);
-        frame.add(passwordField);
-        frame.add(confirmPasswordField);
-        frame.add(cityTextField);
-        frame.add(emailTextField);
-        frame.add(registerButton);
-        frame.add(resetButton);
+ 
+    public void addComponentsToContainer() {
+        container.add(userLabel);
+        container.add(passwordLabel);
+        container.add(userTextField);
+        container.add(passwordField);
+        container.add(showPassword);
+        container.add(loginButton);
+        container.add(resetButton);
+        container.add(forgotPasswordButton);
+        container.add(createAccountButton);
+        
     }
-    public void actionEvent()
-    {
-        registerButton.addActionListener(this);
+ 
+    public void addActionEvent() {
+        loginButton.addActionListener(this);
         resetButton.addActionListener(this);
+        showPassword.addActionListener(this);
+        forgotPasswordButton.addActionListener(this);
+        createAccountButton.addActionListener(this);
     }
-    
-@Override
+ 
+ 
+    @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==registerButton)
-        {
-            try {
-                Connection connection=DriverManager.getConnection("jdbc:derby://localhost:1527/GamingDomainDataBase","VanHoofAlex","password");
-                PreparedStatement Pstatement=connection.prepareStatement("insert into student values(FullName,Gender,FatherName,Password,ConfirmPassword,City,Email)");
-                Pstatement.setString(1,nameTextField.getText());
-                Pstatement.setString(2,genderComboBox.getSelectedItem().toString());
-                Pstatement.setString(3,fatherTextField.getText());
-                Pstatement.setString(4,passwordField.getText());
-                Pstatement.setString(5,confirmPasswordField.getText());
-                Pstatement.setString(6,cityTextField.getText());
-                Pstatement.setString(7,emailTextField.getText());
-                if(passwordField.getText().equalsIgnoreCase(confirmPasswordField.getText()))
-                {
-
-                    Pstatement.executeUpdate();
-                    JOptionPane.showMessageDialog(null,"Data Registered Successfully");
-                }
-                else
-                {
-                    JOptionPane.showMessageDialog(null,"password did not match");
-                }
-
-            } catch (SQLException e1) {
-                e1.printStackTrace();
+        //Coding Part of LOGIN button
+        if (e.getSource() == loginButton) {
+            String userText;
+            String pwdText;
+            userText = userTextField.getText();
+            pwdText = passwordField.getText();
+            if (userText.equalsIgnoreCase("vanhoofa3995") && pwdText.equalsIgnoreCase("password")) {
+                JOptionPane.showMessageDialog(this, "Login Successful");
+            } else {
+                JOptionPane.showMessageDialog(this, "Invalid Username or Password");
             }
-
-
+ 
         }
-        if(e.getSource()==resetButton)
-        {
-            nameTextField.setText("");
-            genderComboBox.setSelectedItem("Male");
-            fatherTextField.setText("");
+        //Coding Part of RESET button
+        if (e.getSource() == resetButton) {
+            userTextField.setText("");
             passwordField.setText("");
-            confirmPasswordField.setText("");
-            cityTextField.setText("");
-            emailTextField.setText("");
         }
-
+        
+       //Coding Part of ForgotPassword button
+       if (e.getSource() == forgotPasswordButton) {
+           dispose();
+           new ForgotPasswordForm();
+        }
+       
+       //Coding Part of Register button
+       if (e.getSource() == createAccountButton) {
+           dispose();
+           new RegistrationForm();
+        }
+       
+       //Coding Part of showPassword JCheckBox
+        if (e.getSource() == showPassword) {
+            if (showPassword.isSelected()) {
+                passwordField.setEchoChar((char) 0);
+            } else {
+                passwordField.setEchoChar('*');
+            }
+ 
+ 
+        }
     }
+ 
 }
-
