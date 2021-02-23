@@ -101,7 +101,10 @@ public class RegistrationForm implements ActionListener {
         {
             try {
                 Connection connection=DriverManager.getConnection("jdbc:derby://localhost:1527/GamingDomainDataBase","VanHoofAlex","password");
-                PreparedStatement Pstatement=connection.prepareStatement("INSERT INTO userProfile" + "VALUES ( lastName, firstName, email, password, confirmPassword, securityQuestion, securityAnswer)");
+                PreparedStatement Pstatement=connection.prepareStatement("INSERT INTO" 
+                        + " userProfile(lastName,firstName,email,password," 
+                        + "confirmPassword,securityQuestion,securityAnswer)" 
+                        + " VALUES (?, ?, ?, ?, ?, ?, ?)");
                 Pstatement.setString(1,lastNameTextField.getText());
                 Pstatement.setString(2,firstNameTextField.getText());
                 Pstatement.setString(3,emailTextField.getText());
