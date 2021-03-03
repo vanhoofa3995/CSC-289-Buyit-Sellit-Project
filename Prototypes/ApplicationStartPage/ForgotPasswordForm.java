@@ -86,8 +86,28 @@ public class ForgotPasswordForm implements ActionListener {
 @Override
     public void actionPerformed(ActionEvent e) {
         //Coding Part of CONFIRM button
-        if (e.getSource() == confirmButton) {      
-                JOptionPane.showMessageDialog(null,"Your new password has been confirmed!");
+        if (e.getSource() == confirmButton) {
+            String username = userTextField.getText();
+            String newpassword = newPasswordField.getText();
+            String query = "UPDATE userProfile SET password='"+newpassword+"' WHERE userName='"+username+"' ";
+            try {
+                Connection connection=DriverManager.getConnection("jdbc:derby://localhost:1527/MyGamingDomainDataBase","VanHoofAlex","password");
+                PreparedStatement Pstatement=connection.prepareStatement(query);              
+                
+                if(newPasswordField.getText().equalsIgnoreCase(newPasswordConfirmField.getText()))
+                {
+
+                    Pstatement.executeUpdate();
+                    JOptionPane.showMessageDialog(null,"New password registered");
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null,"password did not match");
+                }
+
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
         }
         //Coding Part of RESET button
         if (e.getSource() == resetButton) {
