@@ -1,13 +1,19 @@
 package applicationstartpage;
 
 import javax.swing.*;
+import java.awt.event.*;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import java.awt.*;
+import java.sql.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
  
 public class LoginForm extends JFrame implements ActionListener {
     
     Container container = getContentPane();
+    //ImageIcon icon = new ImageIcon("GDIP.png");
+    //JLabel iconLabel = new JLabel("");
     JLabel userLabel = new JLabel("USERNAME");
     JLabel passwordLabel = new JLabel("PASSWORD");
     JTextField userTextField = new JTextField();
@@ -34,21 +40,25 @@ public class LoginForm extends JFrame implements ActionListener {
     }
  
     public void setLocationAndSize() {
-        userLabel.setBounds(20, 150, 100, 30);
-        passwordLabel.setBounds(20, 220, 100, 30);
-        userTextField.setBounds(185, 150, 150, 30);
-        passwordField.setBounds(185, 220, 150, 30);
-        showPassword.setBounds(185, 250, 150, 30);
+        //iconLabel.setText("");
+        //iconLabel.setIcon(icon);
+        //iconLabel.setBounds(20, 220, 100, 30);
+        userLabel.setBounds(20, 220, 100, 30);
+        passwordLabel.setBounds(20, 290, 100, 30);
+        userTextField.setBounds(185, 220, 150, 30);
+        passwordField.setBounds(185, 290, 150, 30);
+        showPassword.setBounds(185, 320, 150, 30);
         showPassword.setBackground(Color.green);
-        loginButton.setBounds(15, 300, 160, 30);
-        resetButton.setBounds(185, 300, 160, 30);
-        forgotPasswordButton.setBounds(15, 340, 160, 30);
-        createAccountButton.setBounds(185, 340, 160, 30);
+        loginButton.setBounds(15, 370, 160, 30);
+        resetButton.setBounds(185, 370, 160, 30);
+        forgotPasswordButton.setBounds(15, 410, 160, 30);
+        createAccountButton.setBounds(185, 410, 160, 30);
  
  
     }
  
     public void addComponentsToContainer() {
+        //container.add(iconLabel);
         container.add(userLabel);
         container.add(passwordLabel);
         container.add(userTextField);
@@ -74,16 +84,29 @@ public class LoginForm extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         //Coding Part of LOGIN button
         if (e.getSource() == loginButton) {
-            String userText;
-            String pwdText;
-            userText = userTextField.getText();
-            pwdText = passwordField.getText();
-            if (userText.equalsIgnoreCase("vanhoofa3995") && pwdText.equalsIgnoreCase("password")) {
-                JOptionPane.showMessageDialog(this, "Login Successful");
-            } else {
-                JOptionPane.showMessageDialog(this, "Invalid Username or Password");
+            String username = userTextField.getText();
+            String password = passwordField.getText();
+            String query = "SELECT * FROM userProfile WHERE userName = ? AND password = ?";
+            try {
+                Connection connection=DriverManager.getConnection("jdbc:derby://localhost:1527/MyGamingDomainDataBase","VanHoofAlex","password");
+                ResultSet rs;
+                PreparedStatement Pstatement=connection.prepareStatement(query);
+                Pstatement.setString(1, username);
+                Pstatement.setString(2, password);
+                rs = Pstatement.executeQuery();
+                
+                if(rs.next())
+                {
+                    JOptionPane.showMessageDialog(null,"Welcome "+username+"!");
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null,"Incorrect Username Or Password");
+                }
+
+            } catch (SQLException e1) {
+                e1.printStackTrace();
             }
- 
         }
         //Coding Part of RESET button
         if (e.getSource() == resetButton) {
