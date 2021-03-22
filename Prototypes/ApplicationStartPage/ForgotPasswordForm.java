@@ -148,5 +148,3 @@ public class ForgotPasswordForm implements ActionListener {
 
     }
 }
-
-
