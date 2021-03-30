@@ -1,3 +1,9 @@
+/*
+ * @author vanhoofa3995
+ * @CSC-289-0B01
+ * @Last Edit 3/20/21
+ */
+
 package applicationstartpage;
 
 import javax.swing.*;
@@ -12,8 +18,17 @@ import java.awt.event.ActionListener;
 public class LoginForm extends JFrame implements ActionListener {
     
     Container container = getContentPane();
-    //ImageIcon icon = new ImageIcon("GDIP.png");
-    //JLabel iconLabel = new JLabel("");
+    //ImageIcon icon = new ImageIcon(getClass().getResource("GDIP.png"));
+    //Image scaleImage = icon.getImage().getScaledInstance(28, 28,Image.SCALE_DEFAULT);
+    //JLabel iconLabel = new JLabel(scaleImage);
+    
+    //ImageIcon icon = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("GDIP.png")));
+    //JLabel iconLabel = new JLabel(icon);
+    //Image img = icon.getImage();
+    //Image img2 = img.getScaledInstance(iconLabel.getWidth(), iconLabel.getHeight(), Image.SCALE_SMOOTH);
+    //ImageIcon x = new ImageIcon(img2);
+    //JLabel newIconLabel = new JLabel(x);
+    
     JLabel userLabel = new JLabel("USERNAME");
     JLabel passwordLabel = new JLabel("PASSWORD");
     JTextField userTextField = new JTextField();
@@ -36,19 +51,17 @@ public class LoginForm extends JFrame implements ActionListener {
     public void setLayoutManager() {
         container.setLayout(null);
         container.setBounds(40,40,400,600);
-        container.setBackground(Color.green);
+        container.setBackground(Color.orange);
     }
  
     public void setLocationAndSize() {
-        //iconLabel.setText("");
-        //iconLabel.setIcon(icon);
-        //iconLabel.setBounds(20, 220, 100, 30);
+        //iconLabel.setBounds(20, 300, 350, 300);
         userLabel.setBounds(20, 220, 100, 30);
         passwordLabel.setBounds(20, 290, 100, 30);
         userTextField.setBounds(185, 220, 150, 30);
         passwordField.setBounds(185, 290, 150, 30);
         showPassword.setBounds(185, 320, 150, 30);
-        showPassword.setBackground(Color.green);
+        showPassword.setBackground(Color.orange);
         loginButton.setBounds(15, 370, 160, 30);
         resetButton.setBounds(185, 370, 160, 30);
         forgotPasswordButton.setBounds(15, 410, 160, 30);
@@ -98,6 +111,8 @@ public class LoginForm extends JFrame implements ActionListener {
                 if(rs.next())
                 {
                     JOptionPane.showMessageDialog(null,"Welcome "+username+"!");
+                    dispose();
+                    new BrowsingStockForm();
                 }
                 else
                 {
