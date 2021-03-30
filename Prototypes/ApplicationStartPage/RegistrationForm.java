@@ -1,3 +1,9 @@
+/*
+ * @author vanhoofa3995
+ * @CSC-289-0B01
+ * @Last Edit 3/20/21
+ */
+
 package applicationstartpage;
 
 import javax.swing.*;
@@ -47,7 +53,7 @@ public class RegistrationForm implements ActionListener {
         frame=new JFrame();
         frame.setTitle("Registration Form");
         frame.setBounds(40,40,400,600);
-        frame.getContentPane().setBackground(Color.green);
+        frame.getContentPane().setBackground(Color.orange);
         frame.getContentPane().setLayout(null);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -138,7 +144,7 @@ public class RegistrationForm implements ActionListener {
                 }
                 else
                 {
-                    JOptionPane.showMessageDialog(null,"password did not match");
+                    JOptionPane.showMessageDialog(null,"Password Did Not Match");
                 }
 
             } catch (SQLException e1) {
@@ -176,3 +182,4 @@ public class RegistrationForm implements ActionListener {
 
     }
 }
+
