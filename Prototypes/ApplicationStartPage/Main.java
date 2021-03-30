@@ -1,3 +1,9 @@
+/*
+ * @author vanhoofa3995
+ * @CSC-289-0B01
+ * @Last Edit 3/20/21
+ */
+
 package applicationstartpage;
 
 import javax.swing.JFrame;
