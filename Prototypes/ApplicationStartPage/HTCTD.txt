@@ -1,0 +1,29 @@
+--------------------------------------------------
+Code used to create and manage the database table:
+--------------------------------------------------
+CREATE table userProfile (
+lastName VARCHAR(15),
+firstName VARCHAR(10),
+email VARCHAR(30),
+userName VARCHAR(20),
+password VARCHAR(20),
+securityQuestion VARCHAR(20),
+securityAnswer VARCHAR(20));
+
+SELECT *
+FROM userProfile;
+
+DROP table userProfile;
+
+DELETE FROM userProfile
+WHERE firstName='test';
+
+---------------------------------------------------------
+Information used to create and manage the database table:
+---------------------------------------------------------
+
+MyGamingDomainDataBase
+
+VanHoofAlex
+
+password
