@@ -1,3 +1,9 @@
+/*
+ * @author vanhoofa3995
+ * @CSC-289-0B01
+ * @Last Edit 3/20/21
+ */
+
 package applicationstartpage;
 
 import javax.swing.*;
@@ -38,7 +44,7 @@ public class ForgotPasswordForm implements ActionListener {
         frame=new JFrame();
         frame.setTitle("Forgot Password Form");
         frame.setBounds(40,40,400,600);
-        frame.getContentPane().setBackground(Color.green);
+        frame.getContentPane().setBackground(Color.orange);
         frame.getContentPane().setLayout(null);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -54,7 +60,7 @@ public class ForgotPasswordForm implements ActionListener {
         newPasswordField.setBounds(185, 220, 150, 30);
         newPasswordConfirmField.setBounds(185, 290, 150, 30);
         showPassword.setBounds(185, 320, 150, 30);
-        showPassword.setBackground(Color.green);
+        showPassword.setBackground(Color.orange);
         confirmButton.setBounds(15, 370, 160, 30);
         resetButton.setBounds(185, 370, 160, 30);
         loginButton.setBounds(15, 410, 160, 30);
@@ -98,11 +104,11 @@ public class ForgotPasswordForm implements ActionListener {
                 {
 
                     Pstatement.executeUpdate();
-                    JOptionPane.showMessageDialog(null,"New password registered");
+                    JOptionPane.showMessageDialog(null,"New Password Registered");
                 }
                 else
                 {
-                    JOptionPane.showMessageDialog(null,"password did not match");
+                    JOptionPane.showMessageDialog(null,"Password Did Not Match");
                 }
 
             } catch (SQLException e1) {
@@ -148,3 +154,5 @@ public class ForgotPasswordForm implements ActionListener {
 
     }
 }
+
+
