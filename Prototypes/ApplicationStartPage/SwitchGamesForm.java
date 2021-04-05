@@ -1,7 +1,7 @@
 /*
  * @author vanhoofa3995
  * @CSC-289-0B01
- * @Last Edit 4/3/21
+ * @Last Edit 4/4/21
  */
 
 package applicationstartpage;
@@ -361,7 +361,7 @@ public void actionPerformed(ActionEvent e) {
         
         //Coding Part of switchItemButton4
         if (e.getSource() == switchItemButton4) {
-           JOptionPane.showMessageDialog(null,"Hollow Knight\n"
+           JOptionPane.showMessageDialog(null,"Monster Hunter\n"
                    + "Open world role playing first person fighter game.\n"
                    + "Is multiplayer, and is cross platform compatable.\n"
                    + "Can be played on Playstation, Switch, Xbox, and Pc.\n"
@@ -369,49 +369,6 @@ public void actionPerformed(ActionEvent e) {
         }
         
         if(e.getSource()==addToCartButton4)
-        {
-            try {
-                Connection connection=DriverManager.getConnection("jdbc:derby://localhost:1527/MyGamingDomainDataBase","VanHoofAlex","password");
-                PreparedStatement Pstatement=connection.prepareStatement("INSERT INTO" 
-                        + " userCart"
-                        + " VALUES ('Hollow Knight', 'Switch', 1, 20.00)");
-                Pstatement.executeUpdate();
-                JOptionPane.showMessageDialog(null,"Item Added To Cart!");
-
-            } catch (SQLException e1) {
-                e1.printStackTrace();
-            }
-
-
-        }
-        
-        if(e.getSource()==removeFromCartButton4)
-        {
-            try {
-                Connection connection=DriverManager.getConnection("jdbc:derby://localhost:1527/MyGamingDomainDataBase","VanHoofAlex","password");
-                PreparedStatement Pstatement=connection.prepareStatement("DELETE FROM" 
-                        + " userCart"
-                        + " WHERE itemName = 'Hollow Knight' AND itemPlatform = 'Switch'");
-                Pstatement.executeUpdate();
-                JOptionPane.showMessageDialog(null,"Item Removed From Cart!");
-
-            } catch (SQLException e1) {
-                e1.printStackTrace();
-            }
-
-
-        }
-        
-        //Coding Part of switchItemButton5
-        if (e.getSource() == switchItemButton5) {
-           JOptionPane.showMessageDialog(null,"Monster Hunter\n"
-                   + "Open world role playing first person shooter game.\n"
-                   + "Is multiplayer, and is cross platform compatable.\n"
-                   + "Can be played on Playstation, Switch, Xbox, and Pc.\n"
-                   + "Being sold for $20.00.");
-        }
-        
-        if(e.getSource()==addToCartButton5)
         {
             try {
                 Connection connection=DriverManager.getConnection("jdbc:derby://localhost:1527/MyGamingDomainDataBase","VanHoofAlex","password");
@@ -428,13 +385,56 @@ public void actionPerformed(ActionEvent e) {
 
         }
         
-        if(e.getSource()==removeFromCartButton5)
+        if(e.getSource()==removeFromCartButton4)
         {
             try {
                 Connection connection=DriverManager.getConnection("jdbc:derby://localhost:1527/MyGamingDomainDataBase","VanHoofAlex","password");
                 PreparedStatement Pstatement=connection.prepareStatement("DELETE FROM" 
                         + " userCart"
                         + " WHERE itemName = 'Monster Hunter' AND itemPlatform = 'Switch'");
+                Pstatement.executeUpdate();
+                JOptionPane.showMessageDialog(null,"Item Removed From Cart!");
+
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+
+
+        }
+        
+        //Coding Part of switchItemButton5
+        if (e.getSource() == switchItemButton5) {
+           JOptionPane.showMessageDialog(null,"Hollow Knight\n"
+                   + "Open world role playing first person fighter game.\n"
+                   + "Is multiplayer, and is cross platform compatable.\n"
+                   + "Can be played on Playstation, Switch, Xbox, and Pc.\n"
+                   + "Being sold for $20.00.");
+        }
+        
+        if(e.getSource()==addToCartButton5)
+        {
+            try {
+                Connection connection=DriverManager.getConnection("jdbc:derby://localhost:1527/MyGamingDomainDataBase","VanHoofAlex","password");
+                PreparedStatement Pstatement=connection.prepareStatement("INSERT INTO" 
+                        + " userCart"
+                        + " VALUES ('Hollow Knight', 'Switch', 1, 20.00)");
+                Pstatement.executeUpdate();
+                JOptionPane.showMessageDialog(null,"Item Added To Cart!");
+
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+
+
+        }
+        
+        if(e.getSource()==removeFromCartButton5)
+        {
+            try {
+                Connection connection=DriverManager.getConnection("jdbc:derby://localhost:1527/MyGamingDomainDataBase","VanHoofAlex","password");
+                PreparedStatement Pstatement=connection.prepareStatement("DELETE FROM" 
+                        + " userCart"
+                        + " WHERE itemName = 'Hollow Knight' AND itemPlatform = 'Switch'");
                 Pstatement.executeUpdate();
                 JOptionPane.showMessageDialog(null,"Item Removed From Cart!");
 
