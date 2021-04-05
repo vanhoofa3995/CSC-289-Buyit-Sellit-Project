@@ -13,10 +13,24 @@ securityAnswer VARCHAR(20));
 SELECT *
 FROM userProfile;
 
+CREATE table userCart (
+itemName VARCHAR(20),
+itemPlatform VARCHAR(20),
+itemCount INTEGER,
+itemPrice INTEGER);
+
+SELECT *
+FROM userCart;
+
 DROP table userProfile;
+
+DROP table userCart;
 
 DELETE FROM userProfile
 WHERE firstName='test';
+
+SELECT SUM(itemPrice) as itemTotal
+FROM userCart;
 
 ---------------------------------------------------------
 Information used to create and manage the database table:
