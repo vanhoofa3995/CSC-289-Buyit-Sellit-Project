@@ -1,7 +1,7 @@
 /*
  * @author vanhoofa3995
  * @CSC-289-0B01
- * @Last Edit 4/3/21
+ * @Last Edit 4/5/21
  */
 
 package applicationstartpage;
@@ -621,7 +621,7 @@ public void actionPerformed(ActionEvent e) {
         if (e.getSource() == xboxItemButton10) {
            JOptionPane.showMessageDialog(null,"RDR2\n"
                    + "Open world role playing first person shooter game.\n"
-                   + "Is not multiplayer, but not cross platform compatable.\n"
+                   + "Is not multiplayer.\n"
                    + "Can be played on Playstation, Pc, and Xbox.\n"
                    + "Being sold for $20.00.");
         }
@@ -663,4 +663,3 @@ public void actionPerformed(ActionEvent e) {
         }
 
     }
-
