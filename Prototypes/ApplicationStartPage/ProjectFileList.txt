@@ -1,0 +1,30 @@
+--------------------------------------------------
+Project File List:
+--------------------------------------------------
+Main.java
+
+GDIP.png
+LoginForm.java
+ForgotPasswordForm.java
+RegistrationForm.java
+
+BrowsingStockForm.java
+
+XboxGamesForm.java
+XboxItemsForm.java
+XboxAddOnsForm.java
+
+SwitchGamesForm.java
+SwitchItemsForm.java
+SwitchAddOnsForm.java
+
+PlayStationGamesForm.java
+PlayStationItemsForm.java
+PlayStationAddOnsForm.java
+
+PcGamesForm.java
+PcItemsForm.java
+PcAddOnsForm.java
+--------------------------------------------------
+New Files to Upload:
+--------------------------------------------------
