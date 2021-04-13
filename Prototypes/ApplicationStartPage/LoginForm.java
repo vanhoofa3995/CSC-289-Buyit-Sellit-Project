@@ -1,7 +1,7 @@
 /*
  * @author vanhoofa3995
  * @CSC-289-0B01
- * @Last Edit 3/20/21
+ * @Last Edit 4/13/21
  */
 
 package applicationstartpage;
@@ -116,7 +116,7 @@ public class LoginForm extends JFrame implements ActionListener {
                 }
                 else
                 {
-                    JOptionPane.showMessageDialog(null,"Incorrect Username Or Password");
+                    JOptionPane.showMessageDialog(null,"Incorrect Username or Password");
                 }
 
             } catch (SQLException e1) {
