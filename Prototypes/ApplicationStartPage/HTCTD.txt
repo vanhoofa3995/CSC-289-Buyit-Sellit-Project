@@ -4,9 +4,9 @@ Code used to create and manage the database table:
 CREATE table userProfile (
 lastName VARCHAR(15),
 firstName VARCHAR(10),
-email VARCHAR(30),
 userName VARCHAR(20),
 password VARCHAR(20),
+email VARCHAR(30),
 securityQuestion VARCHAR(20),
 securityAnswer VARCHAR(20));
 
@@ -21,6 +21,15 @@ itemPrice INTEGER);
 
 SELECT *
 FROM userCart;
+
+CREATE table userProps (
+userName VARCHAR(20),
+cardNumber VARCHAR(30),
+shippingAddress VARCHAR(30),
+billingAddress VARCHAR(30));
+
+SELECT *
+FROM userProps;
 
 DROP table userProfile;
 
