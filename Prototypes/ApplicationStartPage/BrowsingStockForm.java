@@ -1,7 +1,7 @@
 /*
  * @author vanhoofa3995
  * @CSC-289-0B01
- * @Last Edit 3/30/21
+ * @Last Edit 4/13/21
  */
 
 package applicationstartpage;
@@ -33,7 +33,10 @@ public class BrowsingStockForm implements ActionListener {
     JButton playStationAddonsButton = new JButton("ADD-ONS");
     JButton switchGamesButton = new JButton("GAMES");
     JButton switchItemsButton = new JButton("ITEMS");
-    JButton switchAddonsButton = new JButton("ADD-ONS");  
+    JButton switchAddonsButton = new JButton("ADD-ONS");
+    
+    JButton viewCartButton = new JButton("VIEW CART");
+    JButton viewCheckoutButton = new JButton("CHECKOUT"); 
     
     //Creating constructor
     BrowsingStockForm()
@@ -48,7 +51,7 @@ public class BrowsingStockForm implements ActionListener {
     {
         frame=new JFrame();
         frame.setTitle("Browsing Stock Form");
-        frame.setBounds(40,40,400,600);
+        frame.setBounds(40,40,400,700);
         frame.getContentPane().setBackground(Color.orange);
         frame.getContentPane().setLayout(null);
         frame.setVisible(true);
@@ -76,7 +79,10 @@ public class BrowsingStockForm implements ActionListener {
         switchCategoryLabel.setBounds(220, 290, 140, 30);
         switchGamesButton.setBounds(220, 360, 140, 30);
         switchItemsButton.setBounds(220, 430, 140, 30);
-        switchAddonsButton.setBounds(220, 500, 140, 30);        
+        switchAddonsButton.setBounds(220, 500, 140, 30);
+
+        viewCartButton.setBounds(20, 600, 140, 30);
+        viewCheckoutButton.setBounds(220, 600, 140, 30); 
         
     }
     public void addComponentsToFrame()
@@ -104,6 +110,9 @@ public class BrowsingStockForm implements ActionListener {
         frame.add(switchGamesButton);
         frame.add(switchItemsButton);
         frame.add(switchAddonsButton);
+        
+        frame.add(viewCartButton);
+        frame.add(viewCheckoutButton);
     }
     public void actionEvent()
     {
@@ -122,6 +131,9 @@ public class BrowsingStockForm implements ActionListener {
         switchGamesButton.addActionListener(this);
         switchItemsButton.addActionListener(this);
         switchAddonsButton.addActionListener(this);
+        
+        viewCartButton.addActionListener(this);
+        viewCheckoutButton.addActionListener(this);
     }
     
 @Override
@@ -197,6 +209,42 @@ public void actionPerformed(ActionEvent e) {
         if (e.getSource() == switchAddonsButton) {
            frame.dispose();
            new SwitchAddOnsForm();
+        }
+        
+        //Coding Part of VIEW CART button
+        if (e.getSource() == viewCartButton) {
+           try {
+                Connection connection=DriverManager.getConnection("jdbc:derby://localhost:1527/MyGamingDomainDataBase","VanHoofAlex","password");
+                Statement smt=connection.createStatement();
+                String q="Select * from userCart";
+                ResultSet rs=smt.executeQuery(q);
+                ResultSetMetaData rsmd = rs.getMetaData();
+                int columnsNumber = rsmd.getColumnCount();
+                System.out.println("+--------+------------+---------+---------+");
+                System.out.println("|ItemName|ItemPlatform|ItemCount|ItemPrice|");
+                System.out.println("+--------+------------+---------+---------+");
+
+                while (rs.next()) {
+                    for(int i = 1; i <= columnsNumber; i++)
+                        System.out.print(rs.getString(i) + ", ");
+                        System.out.println();
+                }            
+                System.out.println("+--------+------------+---------+---------+");
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println();  
+
+            } 
+            catch(Exception e1){
+		System.out.println(e);
+	    }
+        }
+        
+        //Coding Part of VIEW CHECKOUT button
+        if (e.getSource() == viewCheckoutButton) {
+           frame.dispose();
+           new CheckoutForm();
         }
         
        
