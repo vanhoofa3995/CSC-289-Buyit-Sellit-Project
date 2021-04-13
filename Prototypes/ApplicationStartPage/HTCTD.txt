@@ -6,7 +6,7 @@ lastName VARCHAR(15),
 firstName VARCHAR(10),
 userName VARCHAR(20),
 password VARCHAR(20),
-email VARCHAR(30),
+email VARCHAR(40),
 securityQuestion VARCHAR(20),
 securityAnswer VARCHAR(20));
 
