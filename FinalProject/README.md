@@ -1,1 +1,1 @@
-This folder holds all files and source code related to the final version of the GamingDomain project.
+This folder holds all files and source code related to the final version of the "GamingDomain" project.
