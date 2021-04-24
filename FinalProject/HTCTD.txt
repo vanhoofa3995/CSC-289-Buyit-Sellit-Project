@@ -1,0 +1,52 @@
+--------------------------------------------------
+Code used to create and manage the database table:
+--------------------------------------------------
+CREATE table userProfile (
+lastName VARCHAR(15),
+firstName VARCHAR(10),
+userName VARCHAR(20),
+password VARCHAR(20),
+email VARCHAR(40),
+securityQuestion VARCHAR(20),
+securityAnswer VARCHAR(20));
+
+SELECT *
+FROM userProfile;
+
+CREATE table userCart (
+itemName VARCHAR(20),
+itemPlatform VARCHAR(20),
+itemCount INTEGER,
+itemPrice INTEGER);
+
+SELECT *
+FROM userCart;
+
+CREATE table userProps (
+userName VARCHAR(20),
+cardNumber VARCHAR(30),
+shippingAddress VARCHAR(30),
+billingAddress VARCHAR(30));
+
+SELECT *
+FROM userProps;
+
+DROP table userProfile;
+
+DROP table userCart;
+
+DELETE FROM userProfile
+WHERE firstName='test';
+
+SELECT SUM(itemPrice) as itemTotal
+FROM userCart;
+
+---------------------------------------------------------
+Information used to create and manage the database table:
+---------------------------------------------------------
+
+MyGamingDomainDataBase
+
+VanHoofAlex
+
+password
