@@ -1,1 +1,1 @@
-This repository holds all files and documents related to the "Gaming Domain" Project.
+This repository holds all files, folders, and documents related to the "Gaming Domain" Project.
