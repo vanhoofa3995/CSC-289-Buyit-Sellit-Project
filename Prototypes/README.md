@@ -1,1 +1,1 @@
-This folder holds all files and source code related to any created prototypes.
+This folder holds all files and source code related to any created project prototypes.
